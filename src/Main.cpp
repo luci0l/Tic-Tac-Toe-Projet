@@ -28,7 +28,7 @@ int main() {
     std::cout << "Le joueur 1 est " << joueur1.name << " avec le symbole " << joueur1.symbol << std::endl;
     std::cout << "Le joueur 2 est " << joueur2.name << " avec le symbole " << joueur2.symbol << std::endl;
 
-    play_game(joueur1, joueur2);
+    play_game(joueur1, joueur2, mode);
 
     return 0;
 }

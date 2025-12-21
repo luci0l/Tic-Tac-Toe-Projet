@@ -7,7 +7,7 @@
 void move_ia(Board& tictactoe_board, char ia_symbol){
   int choix_ia;
   do {
-    choix_ia = rand() % 9 + 1;
+    choix_ia = rand() % 9 + 1; 
   } while (!tictactoe_board.case_vide(choix_ia));
 
   std::cout << "L'IA choisit la case : " << choix_ia << std::endl;
@@ -36,7 +36,7 @@ void move(Player joueur, Board& tictactoe_board){
     }
 
     else if (!tictactoe_board.case_vide(choix)){
-      std::cout<<"La case est déja prise. Choisissez en une autre : ";
+      std::cout<<"La case est prise ! Choisissez en une autre : ";
     }
 
     std::cin >> choix;
@@ -48,10 +48,10 @@ void move(Player joueur, Board& tictactoe_board){
 }
 
 
-int play_game(Player joueur1, Player joueur2){
+int play_game(Player joueur1, Player joueur2, int mode){
     int choix;
     int joueur = 1;
-    char ia_choix;
+    int ia_choix;
 
     int coups = 0;
     Board tictactoe_board;
@@ -65,17 +65,22 @@ while (coups < 9) {
     move(joueur1, tictactoe_board);
     coups++;
      if (tictactoe_board.gagner(joueur1.symbol)){
-      std::cout<<"Le joueur "<<joueur1.name<<"gagne \n";
+      std::cout<<"Le joueur "<<joueur1.name<<" gagne! Bravo!\n";
     return 0; 
      }
      if (coups== 9) {
-      std::cout<<"Match Nul \n";
+      std::cout<<"Match Nul :( \n";
       return 0;
      }
+     if (mode==1){
      move(joueur2, tictactoe_board);
+      }
+      else {
+        move_ia(tictactoe_board, joueur2.symbol);
+      }
      coups++;
      if(tictactoe_board.gagner(joueur2.symbol)){
-      std::cout<<"Le joueur "<<joueur2.name<<"gagner \n";
+      std::cout<<"Le joueur "<<joueur2.name<<" gagne! Bravo!\n";
       return 0;
      }
       
